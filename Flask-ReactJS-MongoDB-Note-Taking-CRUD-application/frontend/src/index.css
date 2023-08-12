@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.board {
+  background-color: rgb(32, 220, 163);
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  left:50%;
+  top:50%;
+}
+
+.Intro-text{
+   position:absolute;
+
+   color:black;
+   font-size: 48px;
+   padding: 10px;
+   bottom:620px;
+   justify-content: center;
+  
+}
+.Intro-text1{
+  position:absolute;
+  left: 32%;
+  bottom:50px;
+
+  color:black;
+  font-size: 24px;
+  padding: 10px;
+  bottom:560px;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.signin-button{
+  
+  display: flex;
+  background-color: white;
+  padding:10px;
+  margin-top: 10px;
+  position:absolute;
+  left: 47%;
+  width: 150px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 600;
+  border:  solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  bottom: 450px;
+  
+    
+}
+
+.Google-LogIn{
+  position:absolute;
+  right:865px;
+  bottom:550px;
+
+}
+.vertical-navbar {
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  height: 100vh; /* Set the height to the full viewport height */
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+a:hover {
+  background-color: #555;
+}
+
+.DictionaryText{
+  display: flex;
+  height: 90vh; 
+  font-size: 24px;
+  justify-content: center;
+ 
+ 
+}
+
+.submit-word{
+    display: flex;
+    background-color: rgb(32, 220, 163);
+    padding:20px;
+    margin-top: 5px;
+    position:relative;
+    left: 43%;
+    width: 100px;
+    text-align: center;
+    font-weight: 600;
+    border:  solid white;
+    border-radius: 10px;
+    cursor: pointer;
+   
+
+
+}
+.centered-h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333; /* You can change the color to your preference */
+  margin-top: 15vh;
+  margin-right:1px ;
+  transform: translateY(-50%);
+}

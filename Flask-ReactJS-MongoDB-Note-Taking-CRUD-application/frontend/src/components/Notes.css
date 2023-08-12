@@ -1,0 +1,51 @@
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    
+  }
+  
+  .flashcard-container {
+    margin-top: 20px;
+    position: relative;
+   
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: black;
+    color: rgb(32, 220, 163);
+    font-weight: bolder;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #b2b2b2;
+    cursor: not-allowed;
+  }
+
+  .card-enter {
+    left: 100%; /* Start from the right when entering */
+  }
+  
+  .card-enter-active {
+    left: 0; /* Slide to the left when entering (active state) */
+  }
+  
+  .card-exit {
+    left: 0; /* Start from the current position when exiting */
+  }
+  
+  .card-exit-active {
+    left: -100%; /* Slide to the left when exiting (active state) */
+  }

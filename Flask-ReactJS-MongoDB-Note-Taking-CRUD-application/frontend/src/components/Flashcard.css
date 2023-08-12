@@ -1,0 +1,26 @@
+.flashcard {
+  background-color: lightgreen;
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 350px;
+  height:150px;
+  text-align: center;
+  transition: left 0.3s ease;
+  
+  
+  display: inline-block; /* To display the flashcards side by side */
+}
+
+
+
+.flashcard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
