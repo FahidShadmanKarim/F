@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Logout from "./components/Logout";
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
-import UpdateNotes from './components/UpdateNotes';
+import AddNotes from './components/AddNotes';
 import Notes from './components/Notes';
 function App() {
   
@@ -21,7 +21,7 @@ function App() {
               <Route exact path="/dashboard" element={<Dashboard/>}></Route>
               <Route exact path="/login" element={<Login/>}></Route>
               <Route exact path="/notes" element={<Notes/>}></Route>
-              <Route exact path="/update-notes" element={<UpdateNotes/>}></Route>
+              <Route exact path="/add-notes" element={<AddNotes/>}></Route>
               <Route exact path="/logout" element={<Logout/>}></Route>
             </Routes>
       </div>

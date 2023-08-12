@@ -9,7 +9,7 @@ function VerticalNavbar() {
           <Link to = "/notes">Notes</Link>
         </li>
         <li>
-          <Link to = "/update-notes">Update Notes</Link>
+          <Link to = "/add-notes">Add Notes</Link>
         </li>
         <li>
           <Link to="/logout">Log Out</Link>

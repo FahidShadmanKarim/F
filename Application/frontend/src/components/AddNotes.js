@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { getToken } from './useToken';
 
-function UpdateNotes() {
+function AddNotes() {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
@@ -11,7 +11,7 @@ function UpdateNotes() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch('/update_notes', {
+    fetch('/add_notes', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -139,4 +139,4 @@ function UpdateNotes() {
   );
 }
 
-export default UpdateNotes;
+export default AddNotes;

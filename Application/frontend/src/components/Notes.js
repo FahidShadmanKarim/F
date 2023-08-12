@@ -4,14 +4,15 @@ import useToken from './useToken'
 import Navbar from './Navbar';
 import Flashcard from './Flashcard';
 import './Notes.css';
-
+import UpdateNoteForm from './UpdateNoteForm';
 function Notes() {
-
+  
   const [notes, setNote] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
-   
+
+
   const token = localStorage.getItem('token')
   
   useEffect(() => {
@@ -30,7 +31,7 @@ function Notes() {
       .catch((error) => {
         console.log('Error', error);
       });
-  }, []); // Empty dependency array makes the effect run only once when the component is mounted
+  }, [currentCardIndex]); 
 
   const handleNext = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex + 1) % notes.length);
@@ -39,6 +40,7 @@ function Notes() {
   const handlePrev = () => {
     setCurrentCardIndex((prevIndex) => (prevIndex - 1 + notes.length) % notes.length);
   };
+
 
   const handleDelete = () => {
     const noteId = notes[currentCardIndex]._id;
@@ -58,6 +60,7 @@ function Notes() {
       .then((data) => {
        
         console.log('Note deleted:', data);
+     
         //Remove the deleted note from the local state
         setNote((prevNotes) => prevNotes.filter((note) => note._id !== noteId));
         // Reset the currentCardIndex if needed
@@ -69,11 +72,21 @@ function Notes() {
         console.log('Error', error);
       });
   };
+  
+  const handleUpdate = () => {
+    setShowUpdateForm(true);
+  };
+
+
+
+
+
+  
 
 
   return (
     <div className="notes-container">
-     <Navbar/>
+      <Navbar />
       <h1 style={{ fontSize: '24px', fontWeight: 'bold' }}>Notes</h1>
       <div className="flashcard-container">
         {notes.length > 0 && (
@@ -85,6 +98,7 @@ function Notes() {
         )}
       </div>
       <div className="button-container">
+      
         <button onClick={handlePrev} disabled={notes.length <= 1}>
           Previous
         </button>
@@ -92,9 +106,35 @@ function Notes() {
           Next
         </button>
       </div>
-      <button onClick={() => handleDelete(notes._id)}>Delete</button>
-    </div>
-  );
+      <button onClick={handleDelete}>Delete</button>
+      <button onClick={handleUpdate}>Update</button>
+      {showUpdateForm && (
+       <UpdateNoteForm
+       noteId={notes[currentCardIndex]._id}
+       onClose={() => setShowUpdateForm(false)} // Close the form without updating
+       onUpdate={() => {
+         // Refetch notes or update the specific note
+         fetch('/get_notes', {
+           method: 'GET',
+           headers: {
+             'Authorization': `Bearer ${token}`,
+             'Content-Type': 'application/json',
+           },
+         })
+           .then((response) => response.json())
+           .then((data) => {
+             setNote(data);
+             console.log(data);
+             setShowUpdateForm(false); // Close the form
+           })
+           .catch((error) => {
+             console.log('Error', error);
+           });
+       }}
+     />
+   )}
+ </div>
+);
 }
 
 export default Notes;

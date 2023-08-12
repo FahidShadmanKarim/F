@@ -86,9 +86,9 @@ def my_profile():
     return response_body
 
 
-@app.route('/update_notes', methods=['POST'])
+@app.route('/add_notes', methods=['POST'])
 @jwt_required()
-def update_notes():
+def add_notes():
 
     current_user = get_jwt_identity()
 
@@ -154,7 +154,36 @@ def delete_notes():
 
 
 
-       
+@app.route('/update_notes',methods=['POST','GET'])
+@jwt_required()
+def update_notes():
+
+    current_user = get_jwt_identity()
+    email = current_user[0]
+    user = users_collection.find_one({"email": email})
+    user_id = str(user['_id'])
+      
+
+
+    data = request.get_json()  # Get the JSON data from the request
+    note_id = data.get('note_id')
+    updated_data = data['updated_data']
+
+    quote = updated_data['quote']
+    book = updated_data['book']
+    theme = updated_data['theme']
+
+    note_id = ObjectId(note_id)
+
+    # Update the note in the database
+    notes_collection.update_one(
+            {"_id": ObjectId(note_id)},
+            {"$set": {"quote": quote, "book": book, "theme": theme}}
+    )
+
+
+
+    return jsonify({'Message': 'Data Updated'})
 
       
 
